@@ -10,7 +10,7 @@ cd MHASS_evaluation
 bash scripts/setup.sh
 ```
 Download this data file and unzip it to the same directory:
-[https://drive.google.com/file/d/1e5vz7t-ih5XRo7ATQILbjm3ZlClw1Tz7/view?usp=sharing](https://drive.google.com/file/d/1yZSI0obPQHFSK2Q3f1DvR1pbi1YWnjSE/view?usp=sharing)
+https://drive.google.com/file/d/1F0I_pwu1e4gKK796CsgUZGGq2kQi3Bs0/view?usp=sharing
 
 Then download the ATCC dataset: https://github.com/PacificBiosciences/DevNet/wiki/16S-Data-Set-Sequel-II-System-2.0-Release
 
