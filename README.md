@@ -1,6 +1,6 @@
-# MHASS_evaluation
+# Evaluation of MHASS (Microbiome HiFi Amplicon Sequencing Simulator) - https://github.com/rhowardstone/MHASS
 
-Evaluation scripts and data for all analyses in our evaluation of MHASS (Microbiome HiFi Amplicon Sequencing Simulator - https://github.com/rhowardstone/MHASS)
+Evaluation scripts and data for all analyses in our evaluation of MHASS 
 
 ## Installation
 
