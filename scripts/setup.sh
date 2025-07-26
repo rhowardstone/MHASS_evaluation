@@ -5,7 +5,7 @@
 
 unzip MHASS_datasets.zip
 
-pip install scipy edlib tqdm
+pip install scipy edlib tqdm matplotlib
 
 git clone https://github.com/rhowardstone/MHASS.git
 cd MHASS
