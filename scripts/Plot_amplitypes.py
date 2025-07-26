@@ -77,6 +77,10 @@ def parse_pattern(pattern):
     counts.sort(reverse=True)  # Sort descending so largest counts appear first
     return counts
 
+def get_pattern_string(pattern_list):
+    """Convert a parsed pattern list to a standardized string for sorting."""
+    return '-'.join(str(x) for x in pattern_list)
+
 def parse_data_string(data_string):
     """Parse the multi-line data string into a list of (species, pattern) tuples."""
     species_data = []
@@ -117,8 +121,9 @@ max_species_per_panel = 25
 
 # Create separate figures
 for idx, (species_data, title, filename) in enumerate(zip(all_data, panel_titles, file_names)):
-    # Sort by total ASV count (descending)
-    species_data.sort(key=lambda x: sum(x[1]), reverse=True)
+    # Enhanced sorting: first by total ASV count (descending), 
+    # then by standardized pattern string (lexicographically)
+    species_data.sort(key=lambda x: (-sum(x[1]), get_pattern_string(x[1])))
     
     # Limit the number of species shown if needed
     species_data = species_data[:max_species_per_panel]
@@ -129,12 +134,6 @@ for idx, (species_data, title, filename) in enumerate(zip(all_data, panel_titles
     # Set the title - single line format with better positioning
     fig.suptitle(f'Amplitypes: {title}', fontsize=16, fontweight='bold', 
                  x=0.55, y=0.97)  # Centered over the bars with more space
-    
-    # Sort by total ASV count (descending)
-    species_data.sort(key=lambda x: sum(x[1]), reverse=True)
-    
-    # Limit the number of species shown if needed
-    species_data = species_data[:max_species_per_panel]
     
     # Set up the plot
     ax.set_xlim(-3.5, 9)
@@ -148,9 +147,16 @@ for idx, (species_data, title, filename) in enumerate(zip(all_data, panel_titles
     ax.spines['bottom'].set_visible(False)
     ax.spines['left'].set_visible(False)
     
-    # Plot each species
+    # Add visual grouping lines for species with same total ASV count
+    current_total = None
     for i, (species, pattern) in enumerate(species_data):
         y_pos = len(species_data) - i - 1
+        total_asvs = sum(pattern)
+        
+        # Add a subtle horizontal line when total ASV count changes
+        if current_total is not None and total_asvs != current_total:
+            ax.axhline(y=y_pos + 0.5, color='lightgray', linestyle='-', linewidth=0.5, alpha=0.5)
+        current_total = total_asvs
         
         # Add species name (italicized)
         formatted_name = format_species_name(species)
@@ -159,7 +165,6 @@ for idx, (species_data, title, filename) in enumerate(zip(all_data, panel_titles
         
         # Calculate positions for ASV blocks
         total_width = 8.0  # Total width for pattern display
-        total_asvs = sum(pattern)
         
         # Create blocks for each ASV count
         x_pos = 0.5
@@ -193,3 +198,4 @@ for idx, (species_data, title, filename) in enumerate(zip(all_data, panel_titles
     plt.close()  # Close the figure to free memory
 
 print("Three separate figures have been saved to Publication_figures/")
+print("Species with identical amplitypes are now grouped together within each total ASV count level.")
