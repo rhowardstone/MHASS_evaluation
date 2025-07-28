@@ -245,7 +245,7 @@ def generate_subread_accuracy_figure(output_dir, dpi=600):
     
     # Define paths to linesearch results - FIXED ORDER
     base_dirs = [
-        ('Zymo/Titan', '/data/shoreline/Simulator_datasets/Zymo_Titan_D6300/linesearch_analysis'),
+        ('Zymo/Titan-1', '/data/shoreline/Simulator_datasets/Zymo_Titan_D6300/linesearch_analysis'),
         ('ATCC/16S', '/data/shoreline/Simulator_datasets/ATCC_16S_MSA-1003/linesearch_analysis'),
         ('Phylotag/16S', '/data/shoreline/Simulator_datasets/Phylotag/linesearch_analysis')
     ]
@@ -307,7 +307,7 @@ def generate_errors_by_position_figure(output_dir, dpi=600, threads=None):
     
     # Define paths
     datasets = {
-        'Zymo/Titan': '/data/shoreline/Simulator_datasets/Zymo_Titan_D6300/Analysis_final',
+        'Zymo/Titan-1': '/data/shoreline/Simulator_datasets/Zymo_Titan_D6300/Analysis_final',
         'ATCC/16S': '/data/shoreline/Simulator_datasets/ATCC_16S_MSA-1003/Analysis_final',
         'Phylotag/16S': '/data/shoreline/Simulator_datasets/Phylotag/Analysis_final'
     }
@@ -552,7 +552,7 @@ def generate_figure1_violins(output_dir, dpi=600):
     
     # Define paths - FIXED ORDER
     datasets = [
-        ('Zymo/Titan', {
+        ('Zymo/Titan-1', {
             'real': "/data/shoreline/Simulator_datasets/Zymo_Titan_D6300/Analysis_final/ref-closest-real.txt",
             'sim': "/data/shoreline/Simulator_datasets/Zymo_Titan_D6300/Analysis_final/simulated/ref-closest-sim.txt"
         }),
@@ -685,7 +685,7 @@ def generate_abundance_figure(output_dir, dpi=600):
     
     # Define paths - FIXED ORDER
     datasets = [
-        ('Zymo/Titan', {
+        ('Zymo/Titan-1', {
             'plot_dir': '/data/shoreline/Simulator_datasets/Zymo_Titan_D6300/Analysis_final/abundance_plots_genome',
             'dedup_mapping': '/data/shoreline/Simulator_datasets/Zymo_Titan_D6300/Analysis_final/ref-dedup-mapping.tsv',
             'genome_abunds': '/data/shoreline/Simulator_datasets/Zymo_Titan_D6300/sim/amplicons/genome_abunds.tsv'
@@ -788,7 +788,7 @@ def generate_length_distribution_figure(output_dir, dpi=600):
     
     # Define paths to read FASTQ files and x-axis ranges - FIXED ORDER
     datasets = [
-        ('Zymo/Titan', {
+        ('Zymo/Titan-1', {
             'real': '/data/shoreline/Simulator_datasets/Zymo_Titan_D6300/real/m54215_200618_132850.Q20.fastq',
             'sim': '/data/shoreline/Simulator_datasets/Zymo_Titan_D6300/Analysis_final/simulated/combined_reads.fastq',
             'xlim': (2000, 3000)

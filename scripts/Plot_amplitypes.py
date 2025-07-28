@@ -113,7 +113,7 @@ def get_color_for_count(count, max_count=7):
     }
     return colors.get(count, colors[7])  # Default to darkest for any count > 7
 
-panel_titles = ['Zymo D6300/Titan', 'ATCC MSA-1003/16S', 'Phylotag/16S']
+panel_titles = ['Zymo/Titan-1', 'ATCC/16S', 'Phylotag/16S']
 file_names = ['zymo_d6300_titan', 'atcc_msa_1003_16s', 'phylotag_16s']
 
 # Maximum number of species to show per panel
@@ -129,7 +129,7 @@ for idx, (species_data, title, filename) in enumerate(zip(all_data, panel_titles
     species_data = species_data[:max_species_per_panel]
     
     # Create a new figure for each dataset with adjusted size for better proportions
-    fig, ax = plt.subplots(1, 1, figsize=(8, len(species_data) * 0.4 + 1.5))
+    fig, ax = plt.subplots(1, 1, figsize=(6, len(species_data) * 0.4 + 1.5))
     
     # Set the title - single line format with better positioning
     fig.suptitle(f'Amplitypes: {title}', fontsize=16, fontweight='bold', 
@@ -197,5 +197,4 @@ for idx, (species_data, title, filename) in enumerate(zip(all_data, panel_titles
     plt.savefig(f'Publication_figures/{filename}_amplitypes.png', dpi=200, bbox_inches='tight', facecolor='white')
     plt.close()  # Close the figure to free memory
 
-print("Three separate figures have been saved to Publication_figures/")
-print("Species with identical amplitypes are now grouped together within each total ASV count level.")
+

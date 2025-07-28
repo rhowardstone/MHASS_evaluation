@@ -281,7 +281,7 @@ def main():
     
     # Plot Titan data (top panel)
     plot_distribution_panel(ax1, titan_k, titan_counts, titan_models, 
-                           'Titan Amplicons (2000-3000 bp)', xlim=60)
+                           'Titan-1 Amplicons (2000-3000 bp)', xlim=60)
     
     # Plot 16S data (bottom panel)
     plot_distribution_panel(ax2, s16_k, s16_counts, s16_models, 
